@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadPicture } from "../../JS/actions/user";
-import{Modal}from 'react-bootstrap'
+import { uploadPicture} from "../../JS/actions/user";
+import { toggleFalse} from "../../JS/actions/annonce";
+import{Modal, Button}from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './profil.css'
 
 const Profil = () => {
@@ -52,11 +54,7 @@ Licensed under MIT
         </Modal.Body>
 
          
-         
-         
-         
-         
-         
+        
          
          
           </div>
@@ -64,18 +62,18 @@ Licensed under MIT
           {/* SIDEBAR USER TITLE */}
           <div className="profile-usertitle">
             <div className="profile-usertitle-name">
-              Marcus Doe
+            {(user && user.name) || ""}
             </div>
             <div className="profile-usertitle-job">
-              Developer
+            {(user && user.email) || ""}
+            </div>
+            <div className="profile-usertitle-job">
+            {(user && user.phone) || ""}
             </div>
           </div>
           {/* END SIDEBAR USER TITLE */}
           {/* SIDEBAR BUTTONS */}
-          <div className="profile-userbuttons">
-            <button type="button" className="btn btn-success btn-sm">Follow</button>
-            <button type="button" className="btn btn-danger btn-sm">Message</button>
-          </div>
+          
           {/* END SIDEBAR BUTTONS */}
           {/* SIDEBAR MENU */}
           <div className="profile-usermenu">
@@ -90,11 +88,7 @@ Licensed under MIT
                   <i className="glyphicon glyphicon-user" />
                   Account Settings </a>
               </li>
-               <li>
-                <a href="#" target="_blank">
-                  <i className="glyphicon glyphicon-ok" />
-                  Tasks </a>
-              </li>
+               
               <li>
                 <a href="#">
                   <i className="glyphicon glyphicon-flag" />
@@ -107,14 +101,19 @@ Licensed under MIT
       </div>
       <div className="col-md-9">
         <div className="profile-content">
-          Some user related content goes here...
+        <h2>
+        Mes Annonces
+          </h2>
+          <Link to="/add_annonce">
+          <Button variant="light"
+          onClick={() => { dispatch(toggleFalse()) }}
+          >Ajouter une annonce</Button>
+          </Link>
         </div>
       </div>
     </div>
   </div>
-  <center>
-    <strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
-  </center>
+  
   <br />
   <br />
 </>

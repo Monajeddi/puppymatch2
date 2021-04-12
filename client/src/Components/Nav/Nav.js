@@ -20,7 +20,7 @@ const Nav = () => {
   <div className="collapse navbar-collapse hover-dropdown" id="header2">
     <ul className="navbar-nav">
       <li className="nav-item active"><a className="nav-link" href="/">Home</a></li>
-      <li className="nav-item active"><a className="nav-link" href="#">Annonces</a></li>
+      <li className="nav-item active"><a className="nav-link" href="/annonces">Annonces</a></li>
       <li className="nav-item"><a className="nav-link" href="#">Actualités</a></li>
       <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
     </ul>

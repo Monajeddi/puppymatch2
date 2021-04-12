@@ -33,7 +33,7 @@ const Signup = ({ history }) => {
       {/* For Demo Purpose */}
       <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
         <h1>Créer un compte</h1>
-        <p className="font-italic text-muted mb-0">Consultez nos annonces d'animaux, votre animal aura peut être sa chance ici.</p>
+        <p className="font-italic text-muted mb-0">Consultez nos annonces, votre animal aura peut être sa chance chez nous.</p>
         <img src={chiens} alt="chiens" className="img-fluid mb-3 d-none d-md-block" />
         <p className="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" className="text-muted">
             <u>Bootstrapious</u></a>

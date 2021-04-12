@@ -1,23 +1,50 @@
-import { UPLOAD_PICTURE} from "../actionTypes/user";
+
+import {ANNONCE_SUCCESS, ANNONCE_LOAD, ANNONCE_FAIL, GET_ANNONCE, TOGGLE_TRUE, TOGGLE_FALSE } from '../actionTypes/annonce'
 
 
 
 const initialState = {
-    annonce: [],
-    
+    annonces: [],
+    errors: [],
+    isLoading : false,
+    user: {},
+    isEdit: false
   };
 
   const annonceReducer=(state=initialState,{type,payload})=>{
-      switch (type) {
-        case UPLOAD_PICTURE:
-            return {
-              ...state,
-              picture: payload.picture,
-            };
-
-          default:
-              return state;
+    switch (type) {
+      case ANNONCE_LOAD: return {
+          ...state,
+          isLoading: true
       }
-  };
+      case ANNONCE_SUCCESS: return {
+          ...state,
+          annonces: payload,
+          isLoading: false
+      }
+      case ANNONCE_FAIL: return {
+          ...state,
+          errors: payload,
+          isLoading: false
+      }
+      
+      case GET_ANNONCE: return {
+          ...state,
+          user: payload
+      }
+      case TOGGLE_TRUE: return {
+        ...state,
+        isEdit: true
+
+      }
+      case TOGGLE_FALSE: return {
+        ...state,
+        isEdit: false
+    }
+
+      default: return state
+  }
+
+}
 
 export default annonceReducer;

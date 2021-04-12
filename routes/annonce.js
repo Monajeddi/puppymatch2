@@ -35,7 +35,7 @@ router.post('/', controllers.addAnnonce)
 /**
  * @desc : get all annonces
  * @method : GET
- * @path : http://localhost:7000/api/annonces/test
+ * @path : http://localhost:7000/api/annonces/annonces
  * @data : nothing
  * @acess : public
  */

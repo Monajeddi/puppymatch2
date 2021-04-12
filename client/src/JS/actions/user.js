@@ -9,7 +9,7 @@ export const signUp = (newUser, history) => async (dispatch) => {
       const result = await axios.post("/api/user/signup", newUser);
   
       dispatch({ type: SIGNUP_USER, payload: result.data }); 
-      history.push("/Profile");
+      history.push("/Profil");
     } catch (error) {
       console.log(error.response.data.errorrs);
       
@@ -36,7 +36,7 @@ export const signUp = (newUser, history) => async (dispatch) => {
     try {
       const result = await axios.post("/api/user/signin", user);
       dispatch({ type: SIGNIN_USER, payload: result?.data }); //msg /token , user
-      history.push("/Profile");
+      history.push("/Profil");
       console.log(user)
     } catch (error) {
       // error.response.data.errors.map((el) =>
