@@ -42,6 +42,8 @@ router.post('/', controllers.addAnnonce)
 
  router.get('/', controllers.getAnnonce)
 
+ router.get('/:_id', controllers.getAnnonceById)
+
 /**
  * @desc : delete annonce
  * @method : DELETE
@@ -59,7 +61,8 @@ router.delete('/:_id', controllers.deleteAnnonce)
  * @acess : public
  */
 
- router.put('/:_id', controllers.updateAnnonce)
+router.put('/:_id', controllers.updateAnnonce)
+
 
  //********************upload Image******************* */
 router.post('/upload',upload.single('file'),uploadProfil)

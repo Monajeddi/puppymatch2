@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import {logout} from '../../JS/actions/user'
+import {logout} from '../../JS/actions/user';
+import {Dropdown, DropdownButton} from 'react-bootstrap'
 import logopuppy from '../../Assets/logopuppy.png';
 import logo1 from '../../Assets/logo1.png';
 import './Nav.css'
@@ -24,13 +25,31 @@ const Nav = () => {
       <li className="nav-item"><a className="nav-link" href="#">Actualités</a></li>
       <li className="nav-item"><a className="nav-link" href="/contact">Contact</a></li>
     </ul>
+
+
+    
+
     {isAuth? (
-      <Link to="/" onClick={() => dispatch(logout())}>
+      <DropdownButton className="btn" title="Mon compte">
+
+        {/* <li className="nav-item"> <a className="nav-link" href="#"> <span className="fas fa-user pe-2"></span> Hello Jhon</a> </li> */}
+      
+        
+         <Link to="/profil">
+      <Dropdown.Item href="#/action-2">Mon Profil</Dropdown.Item>
+       </Link>
+
+        <Link to="/" onClick={() => dispatch(logout())}>
          {" "}
-          <a href="#" className="btn-area">
-            Logout
-          </a>
+      <Dropdown.Item href="#/action-1">Logout</Dropdown.Item>
       </Link>
+      
+      
+    </DropdownButton>  
+    
+    
+       
+      
     )
   :(
     <ul className="navbar-nav ml-auto">
@@ -45,6 +64,9 @@ const Nav = () => {
   )}
     
   </div>
+
+
+  
 </nav>
 </div>
         </div>

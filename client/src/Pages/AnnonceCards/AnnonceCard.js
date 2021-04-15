@@ -1,9 +1,11 @@
 import React from 'react';
 import {Card, Button} from 'react-bootstrap';
+
 import { Link } from "react-router-dom";
 import './cards.css'
 
 const AnnonceCard = ({annonce}) => {
+  
     return (
         <div className="annonce-card">
              {/* <section id="gallery">
@@ -25,6 +27,7 @@ const AnnonceCard = ({annonce}) => {
   </div>
 </section> */}
 
+
 <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" />
   <Card.Body>
@@ -32,7 +35,7 @@ const AnnonceCard = ({annonce}) => {
     <Card.Text>
     {annonce.race}
     </Card.Text>
-    <Link to='/description'>
+    <Link to={`/description/${annonce._id}`}>
         <a href className="btn btn-outline-success btn-sm">Description</a>
     </Link>
         <a href className="btn btn-outline-danger btn-sm"><i className="far fa-heart" /></a>

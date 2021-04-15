@@ -7,7 +7,7 @@ const initialState = {
     annonces: [],
     errors: [],
     isLoading : false,
-    user: {},
+    annonce: {},
     isEdit: false
   };
 
@@ -30,7 +30,7 @@ const initialState = {
       
       case GET_ANNONCE: return {
           ...state,
-          user: payload
+          annonce: payload
       }
       case TOGGLE_TRUE: return {
         ...state,

@@ -19,6 +19,9 @@ import Profil from './Pages/Profil/Profil';
 import Annonces from './Pages/Annonces/Annonces';
 import Description from './Pages/Description/Description'
 import AddAnnonce from './Pages/Add/AddAnnonce';
+import Admin from './Pages/admin/Admin';
+import ListeAnnonce from './Pages/admin/ListeAnnonce';
+import ListeUtilisateurs from './Pages/admin/ListeUtilisateurs';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +42,13 @@ function App() {
         <Route path="/signup" component={Signup}/>
         <Route path="/signin" component={Signin}/>
         <Route path="/annonces" component={Annonces}/>
-        <PrivateRoute path="/description" component={Description}/>
+        <PrivateRoute path="/description/:id" component={Description}/>
         <PrivateRoute path="/profil" component={Profil}/>
         <PrivateRoute path="/add_annonce" component={AddAnnonce}/>
+        <Route path="/admin" component={Admin}/>
+        <Route path="/listeannonce" component={ListeAnnonce}/>
+        <Route path="/listeutilisateurs" component={ListeUtilisateurs}/>
+        {/* <PrivateRoute path="/admin" component={Admin}/> */}
         <Route path="/*" component={Errors}/>
       </Switch>
       <Footer/>

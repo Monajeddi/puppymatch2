@@ -36,6 +36,10 @@ const annonceScema = new schema({
         type: String,
         require: true,
     },
+    createBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
 
 })
 

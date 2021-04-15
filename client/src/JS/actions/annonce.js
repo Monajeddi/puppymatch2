@@ -43,8 +43,9 @@ export const editAnnonce = (AnnonceId, newAnnonce) => async (dispatch) => {
 // get one contact by id
 export const getAnnonce = (AnnonceId) => async (dispatch) => {
   try {
-      const res = await axios.get(`/api/contacts/${AnnonceId}`)
-      dispatch({ type: GET_ANNONCE, payload: res.data.annonceToFind })
+      const res = await axios.get(`/api/annonces/${AnnonceId}`)
+      dispatch({ type: GET_ANNONCE, payload: res.data })
+      console.log(res.data.annonceToFind)
   } catch (error) {
       console.log(error)
   }

@@ -32,6 +32,17 @@ const getAnnonce = async (req, res) => {
     }
 }
 
+const getAnnonceById = async (req, res) => {
+    try {
+            const { _id } = req.params
+            const annonceToFind = await Annonce.findOne({ _id })
+            console.log(annonceToFind)
+            res.status(200).send({ msg: 'I find the product...', annonceToFind })
+    } catch (error) {
+            res.status(400).send({ msg: 'Can not get product with this id !!', error })
+        }
+}
+
 const deleteAnnonce = async(req, res) => {
     try {
         const { _id } = req.params
@@ -61,4 +72,4 @@ const updateAnnonce = async (req, res) => {
 }
 
 
-module.exports = controllers = { addAnnonce, getAnnonce, deleteAnnonce, updateAnnonce}
+module.exports = controllers = { addAnnonce, getAnnonce, deleteAnnonce, updateAnnonce, getAnnonceById}
