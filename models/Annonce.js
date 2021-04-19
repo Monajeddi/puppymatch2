@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {ObjectId} = mongoose.Schema
 
 const schema = mongoose.Schema
 
@@ -41,13 +42,11 @@ const annonceScema = new schema({
         require: true,
     },
     
-    user: [{
-        type: mongoose.Schema.Types.ObjectId,
+    user: {
+        type: ObjectId,
         ref: 'User'
-    }],
-    posterId:{
-        type:Number,
     }
+    
 
 })
 

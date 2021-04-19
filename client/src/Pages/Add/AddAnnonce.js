@@ -10,7 +10,7 @@ const AddAnnonce = ({ history }) => {
     const user = useSelector((state) => state.userReducer.user);
     const isEdit = useSelector(state => state.annonceReducer.isEdit)
 
-    const [annonce, setAnnonce] = useState({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", posterId: user._id})
+    const [annonce, setAnnonce] = useState({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", user: user._id})
 
     const dispatch = useDispatch()
 

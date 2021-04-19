@@ -38,8 +38,7 @@ exports.signIn = async (req, res) => {
     try {
         const {email, password} = req.body;
 
-        const findUser = await User.findOne({ email}).populate('annonces', 'nom', Annonce).
-        exec();
+        const findUser = await User.findOne({ email})
 
         if (!findUser) {
             res.status(400).send({ errors: [{ msg: "Bad Credential" }] });

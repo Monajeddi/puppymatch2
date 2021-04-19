@@ -11,7 +11,7 @@ const AnnonceList = ({SearchTerm, setSearchTerm}) => {
     const annonces = useSelector(state => state.annonceReducer.annonces)
     const dispatch = useDispatch()
     const [filterName, setFilterName] = useState("");
-
+console.log(annonces)
     useEffect(() => {
         dispatch(getAnnonces())
     }, [dispatch]);

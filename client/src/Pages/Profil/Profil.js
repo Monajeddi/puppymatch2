@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture} from "../../JS/actions/user";
 import { toggleFalse} from "../../JS/actions/annonce";
 import{Modal, Button}from 'react-bootstrap';
+import {getAnnonces} from '../../JS/actions/annonce';
 import AnnonceCard from '../AnnonceCards/AnnonceCard';
+import AnnonceCard1 from '../AnnonceCards/AnnonceCard1';
 import { Link } from 'react-router-dom';
 import './profil.css'
 
@@ -11,8 +13,19 @@ const Profil = () => {
   const isAuth = useSelector((state) => state.userReducer.isAuth);
     const user = useSelector((state) => state.userReducer.user);
     const annonces = useSelector(state => state.annonceReducer.annonces)
+    const [annonceData, setAnnonceData] = useState([])
     const [file, setFile] = useState();
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+console.log(annonces)
+useEffect(() => {
+  dispatch(getAnnonces())
+}, [dispatch]);
+
+    useEffect(() => {
+      setAnnonceData(annonces)
+      
+    }, [annonces])
+  
   const handlePicture = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -113,8 +126,13 @@ Licensed under MIT
         <h2>
         Mes Annonces 
           </h2>
-          <div className="profile-usertitle-name">
-            {(user && user.annonces) || ""}
+
+          <div className="annonce-list">
+
+                    {annonceData.length &&
+                    annonceData
+                    .filter(annonce => annonce.user._id === user?._id)
+                        .map(annonce =><AnnonceCard1 annonce={annonce} key={annonce._id} />)}
             </div>
           {/* <div className="annonce-list">
                     {annonces

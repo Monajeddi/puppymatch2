@@ -1,8 +1,9 @@
 const Annonce = require("../models/Annonce");
+const User = require("../models/User");
 
 const addAnnonce = async (req, res) => {
     try {
-        const {nom, race, age, sexe, vaccins, description, localisation, contact} = req.body
+        const {nom, race, age, sexe, vaccins, description, localisation, contact, user} = req.body
         if (!nom || !race || !age || !sexe || !vaccins || !localisation || !contact) {
             res.status(400).send({ msg: 'Veuillez remplir tous les champs requis !'  })
             return;
@@ -16,6 +17,7 @@ const addAnnonce = async (req, res) => {
         description, 
         localisation,
         contact,
+        user,
         
         
     })
@@ -29,7 +31,7 @@ const addAnnonce = async (req, res) => {
 
 const getAnnonce = async (req, res) => {
     try {
-       const listAnnonces =  await Annonce.find().populate('annonces', 'nom', Annonce)
+       const listAnnonces =  await Annonce.find().populate('user', 'name', User)
        res.status(200).send({msg : 'Liste des annonces', listAnnonces})
     } catch (error) {
        res.status(400).send({msg : 'Liste inaccessible', error})
