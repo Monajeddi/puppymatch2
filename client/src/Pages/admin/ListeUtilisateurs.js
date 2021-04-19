@@ -1,9 +1,15 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import {Table } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
 import './admin.css'
 
 
 const ListeUtilisateurs = () => {
+  const user = useSelector((state) => state.userReducer.user);
+  const dispatch = useDispatch()
+
+  
     return (
         <div>
             
@@ -64,11 +70,36 @@ const ListeUtilisateurs = () => {
             <div className="col-lg-4">
               <div className="d-flex flex-column justify-content-between order-summary">
                 <div className="d-flex align-items-center">
-                  <div className="text-uppercase">Order #fur10001</div>
+                  
+                <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Annonce</th>
+      <th>Nom</th>
+      <th>Race</th>
+      <th>Description</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {user.map((user) =>(
+      <tr>
+      <td></td>
+      <td>{(user && user.name) || ""}</td>
+      <td>{(user && user.name) || ""}</td>
+      <td>{(user && user.name) || ""}</td>
+      <i class="far fa-trash-alt"></i>
+    </tr>
+    ))}
+    
+    
+    
+  </tbody>
+</Table>
                   
                 </div>
-                <div className="fs-8">Products #03</div>
-                <i class="far fa-trash-alt"></i>
+                
+                
                 
               </div>
             </div>

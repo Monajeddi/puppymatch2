@@ -7,9 +7,10 @@ import './add.css'
 const AddAnnonce = ({ history }) => {
 
     const annonceReducer = useSelector(state => state.annonceReducer.annonce)
+    const user = useSelector((state) => state.userReducer.user);
     const isEdit = useSelector(state => state.annonceReducer.isEdit)
 
-    const [annonce, setAnnonce] = useState({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:""})
+    const [annonce, setAnnonce] = useState({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", posterId: user._id})
 
     const dispatch = useDispatch()
 
@@ -117,6 +118,14 @@ const AddAnnonce = ({ history }) => {
           <Form.Control as="textarea" rows={1}
            name="localisation"
            value={annonce.localisation}
+           onChange={handleChange}/>
+        </Form.Group>
+
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Contact</Form.Label>
+          <Form.Control type="number" placeholder="Contact"
+           name="contact"
+           value={annonce.contact}
            onChange={handleChange}/>
         </Form.Group>
 

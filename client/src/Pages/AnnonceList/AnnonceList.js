@@ -7,10 +7,10 @@ import Search from '../../Components/Search';
 
 import './list.css'
 
-const AnnonceList = () => {
+const AnnonceList = ({SearchTerm, setSearchTerm}) => {
     const annonces = useSelector(state => state.annonceReducer.annonces)
     const dispatch = useDispatch()
-    const [filterNom, setFilterNom] = useState("");
+    const [filterName, setFilterName] = useState("");
 
     useEffect(() => {
         dispatch(getAnnonces())
@@ -26,7 +26,7 @@ const AnnonceList = () => {
             value={filterNom}
             setSearchTerm={setSearchTerm}/> */}
                 
-                <h1>heelo</h1>
+                
             </div>
             <div className="annonce-content" >
             {/* <Form inline>
@@ -37,9 +37,20 @@ const AnnonceList = () => {
                     placeholder="Search" 
                     className="mr-sm-2" />
                 </Form> */}
+                <div className="card-headerr">
+            <Form inline >
+                    <FormControl
+                    onChange={(e) => setFilterName(e.target.value)}
+                    value={filterName}
+                    type="text"
+                    placeholder="Search"
+                    className="mr-sm-2"
+                    />
+            </Form>
+            </div>
                 <div className="annonce-list">
                     {annonces
-                    //.filter(annonce => annonce.nom.toLowerCase().includes(filterNom.toLowerCase()))
+                    .filter((annonce) => annonce.nom.toLowerCase().includes(filterName.toLowerCase()))
                         .map(annonce =><AnnonceCard annonce={annonce} key={annonce._id} />)}
             </div>
                 </div>

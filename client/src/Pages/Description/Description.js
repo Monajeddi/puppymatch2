@@ -46,9 +46,11 @@ const Description = ({match}) => {
               <p className="post">{annoncee?.sexe}</p>
               <p className="post">{annoncee?.poil}</p>
               <p className="description">
+              {annoncee?.description}
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dolor nibh, semper at pretium vitae, tincidunt non risus. Aenean mattis sit amet ex nec venenatis. Pellentesque tempus pellentesque efficitur. Nulla commodo bibendum quam, at imperdiet orci congue non. Maecenas interdum.
               </p>
               <p className="post">{annoncee?.localisation}</p>
+              <p className="post">{annoncee?.contact}</p>
             </div>
           </div>
           

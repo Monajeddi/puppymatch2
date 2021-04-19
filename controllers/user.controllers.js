@@ -7,7 +7,7 @@ exports.signUp = async (req, res) => {
     try {
        
         const {name, email, password, phone}= req.body;
-        const findUser = await User.findOne({ email});
+        const findUser = await (await User.findOne({ email}));
         if (findUser) {
             return res.status(400).send({ errors:[{ msg: "user already exist email should be unique" }] })
         }
@@ -38,7 +38,8 @@ exports.signIn = async (req, res) => {
     try {
         const {email, password} = req.body;
 
-        const findUser = await User.findOne({ email});
+        const findUser = await User.findOne({ email}).populate('annonces', 'nom', Annonce).
+        exec();
 
         if (!findUser) {
             res.status(400).send({ errors: [{ msg: "Bad Credential" }] });

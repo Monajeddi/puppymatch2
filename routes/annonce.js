@@ -51,7 +51,7 @@ router.post('/', controllers.addAnnonce)
  * @data : req.params
  * @acess : public
  */
-router.delete('/:_id', controllers.deleteAnnonce)
+router.delete('/:id', controllers.deleteAnnonce)
 
 /**
  * @desc : edit annonce
@@ -66,5 +66,8 @@ router.put('/:_id', controllers.updateAnnonce)
 
  //********************upload Image******************* */
 router.post('/upload',upload.single('file'),uploadProfil)
+
+//********************Likes******************* */
+// router.put('/like', controllers.like)
 
 module.exports = router

@@ -29,7 +29,7 @@ const AnnonceCard = ({annonce}) => {
 
 
 <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" />
+  <Card.Img variant="top" src="https://www.eleveurs-online.com/data/race/331.300.webp" />
   <Card.Body>
     <Card.Title>{annonce.nom}</Card.Title>
     <Card.Text>
@@ -38,8 +38,8 @@ const AnnonceCard = ({annonce}) => {
     <Link to={`/description/${annonce._id}`}>
         <a href className="btn btn-outline-success btn-sm">Description</a>
     </Link>
-        <a href className="btn btn-outline-danger btn-sm"><i className="far fa-heart" /></a>
-   
+        {/* <a href className="btn btn-outline-danger btn-sm"><i className="far fa-heart" /></a>
+    */}
     
   </Card.Body>
 </Card>

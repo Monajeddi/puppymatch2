@@ -85,3 +85,15 @@ export const uploadPicture = (data, id) => {
         .catch((err) => console.log(err));
     };
   };
+
+
+  // delete contact
+export const deleteAnnonce = (_id) => async (dispatch) => {
+  try {
+      await axios.delete(`/api/annonces/${_id}`)
+      dispatch(getAnnonces())
+  } catch (error) {
+      console.log(error)
+  }
+}
+

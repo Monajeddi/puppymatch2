@@ -5,7 +5,7 @@ const schema = mongoose.Schema
 const annonceScema = new schema({
     picture: {
         type: String,
-        default:''
+        
     },
     nom: {
         type: String,
@@ -36,9 +36,17 @@ const annonceScema = new schema({
         type: String,
         require: true,
     },
-    createBy: {
+    contact: {
+        type:Number,
+        require: true,
+    },
+    
+    user: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
+    }],
+    posterId:{
+        type:Number,
     }
 
 })

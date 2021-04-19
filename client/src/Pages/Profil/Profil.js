@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { uploadPicture} from "../../JS/actions/user";
 import { toggleFalse} from "../../JS/actions/annonce";
 import{Modal, Button}from 'react-bootstrap';
+import AnnonceCard from '../AnnonceCards/AnnonceCard';
 import { Link } from 'react-router-dom';
 import './profil.css'
 
 const Profil = () => {
+  const isAuth = useSelector((state) => state.userReducer.isAuth);
     const user = useSelector((state) => state.userReducer.user);
+    const annonces = useSelector(state => state.annonceReducer.annonces)
     const [file, setFile] = useState();
   const dispatch = useDispatch();
   const handlePicture = (e) => {
@@ -99,19 +102,35 @@ Licensed under MIT
           {/* END MENU */}
         </div>
       </div>
+      {isAuth && !(user && user.role===0)?
+            <Link to="/admin">
+              <Button gradient="purple">Admindashboard</Button>
+            </Link>
+            : 
+
       <div className="col-md-9">
         <div className="profile-content">
         <h2>
-        Mes Annonces
+        Mes Annonces 
           </h2>
+          <div className="profile-usertitle-name">
+            {(user && user.annonces) || ""}
+            </div>
+          {/* <div className="annonce-list">
+                    {annonces
+                    // .filter(annonce => annonce.)
+                        .map(annonce =><AnnonceCard annonce={annonce} key={annonce._id} />)}
+            </div> */}
           <Link to="/add_annonce">
           <Button variant="light"
           onClick={() => { dispatch(toggleFalse()) }}
           >Ajouter une annonce</Button>
           </Link>
         </div>
-        
       </div>
+        }
+
+
     </div>
   </div>
   

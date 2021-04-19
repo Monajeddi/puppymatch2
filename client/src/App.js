@@ -9,7 +9,8 @@ import Errors from './Pages/Errors';
 import Footer from './Components/Footer/Footer';
 
 import Nav from './Components/Nav/Nav';
-import PrivateRoute from './router/PrivateRoute'
+import PrivateRoute from './router/PrivateRoute';
+import PrivateRouteAdmin from './router/PrivateRouteAdmin';
 
 import {currentUser} from './JS/actions/user'
 
@@ -22,8 +23,14 @@ import AddAnnonce from './Pages/Add/AddAnnonce';
 import Admin from './Pages/admin/Admin';
 import ListeAnnonce from './Pages/admin/ListeAnnonce';
 import ListeUtilisateurs from './Pages/admin/ListeUtilisateurs';
+import Actualités from './Components/Actualités/Actualités'
+import Article1 from './Components/Article1/Article1';
+import Article2 from './Components/Article2/Article2';
+import Article3 from './Components/Article3/Article3';
+
 
 function App() {
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -42,12 +49,18 @@ function App() {
         <Route path="/signup" component={Signup}/>
         <Route path="/signin" component={Signin}/>
         <Route path="/annonces" component={Annonces}/>
+        <Route path="/actualités" component={Actualités}/>
+        <Route path="/article1" component={Article1}/>
+        <Route path="/article2" component={Article2}/>
+        <Route path="/article3" component={Article3}/>
+
         <PrivateRoute path="/description/:id" component={Description}/>
         <PrivateRoute path="/profil" component={Profil}/>
         <PrivateRoute path="/add_annonce" component={AddAnnonce}/>
-        <Route path="/admin" component={Admin}/>
-        <Route path="/listeannonce" component={ListeAnnonce}/>
-        <Route path="/listeutilisateurs" component={ListeUtilisateurs}/>
+        
+        <PrivateRouteAdmin exact path="/admin" component={Admin}/>
+        <PrivateRouteAdmin path="/listeannonce" component={ListeAnnonce}/>
+        
         {/* <PrivateRoute path="/admin" component={Admin}/> */}
         <Route path="/*" component={Errors}/>
       </Switch>

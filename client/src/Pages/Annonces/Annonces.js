@@ -1,15 +1,17 @@
-import React from 'react';
-import Carrousel from '../../Components/Carrousel/Carrousel';
+import React, { useState } from 'react';
+
+import Navbar from '../../Components/Navbar/Navbar';
 
 import AnnonceList from '../AnnonceList/AnnonceList';
 
 const Annonces = () => {
-  
+  const [SearchTerm, setSearchTerm] = useState("")
 
 
     return (
         <div>
-          <Carrousel/>
+         
+          <Navbar SearchTerm={SearchTerm} setSearchTerm={setSearchTerm}/>
           
            <AnnonceList />
         </div>
