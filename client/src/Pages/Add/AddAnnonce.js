@@ -16,11 +16,11 @@ const AddAnnonce = ({ history }) => {
 
     useEffect(() => {
       isEdit ? setAnnonce(annonceReducer) : setAnnonce({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", user: user._id})
-  }, [isEdit, annonceReducer, user._id]);
-
+  }, [isEdit, annonceReducer]);
+console.log({ann:annonce})
     // handleEdit function
     const handleEdit = () => {
-      dispatch(editAnnonce(annonce._id, annonce))
+      dispatch(editAnnonce(annonceReducer._id, annonce))
   }
 
      // handlechange

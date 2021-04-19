@@ -30,7 +30,7 @@ const initialState = {
       
       case GET_ANNONCE: return {
           ...state,
-          annonce: payload
+          annonce: payload.annonceToFind
       }
       case TOGGLE_TRUE: return {
         ...state,
