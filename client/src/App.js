@@ -56,7 +56,7 @@ function App() {
 
         <PrivateRoute path="/description/:id" component={Description}/>
         <PrivateRoute path="/profil" component={Profil}/>
-        <PrivateRoute path="/add_annonce" component={AddAnnonce}/>
+        <PrivateRoute path="/(add_annonce|edit_annonce)" component={AddAnnonce}/>
         
         <PrivateRouteAdmin exact path="/admin" component={Admin}/>
         <PrivateRouteAdmin path="/listeannonce" component={ListeAnnonce}/>

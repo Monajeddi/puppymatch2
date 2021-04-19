@@ -134,11 +134,7 @@ Licensed under MIT
                     .filter(annonce => annonce.user._id === user?._id)
                         .map(annonce =><AnnonceCard1 annonce={annonce} key={annonce._id} />)}
             </div>
-          {/* <div className="annonce-list">
-                    {annonces
-                    // .filter(annonce => annonce.)
-                        .map(annonce =><AnnonceCard annonce={annonce} key={annonce._id} />)}
-            </div> */}
+          
           <Link to="/add_annonce">
           <Button variant="light"
           onClick={() => { dispatch(toggleFalse()) }}

@@ -1,10 +1,16 @@
 import React from 'react'
 import {Card, Button} from 'react-bootstrap';
+import { useDispatch, useSelector} from 'react-redux';
+import {deleteAnnonce , getAnnonce , toggleTrue} from '../../JS/actions/annonce';
 
 import { Link } from "react-router-dom";
 import './cards.css'
 
 const AnnonceCard1 = ({annonce}) => {
+    const dispatch = useDispatch()
+    const isEdit = useSelector(state => state.annonceReducer.isEdit)
+
+    
     return (
         
             
@@ -19,9 +25,14 @@ const AnnonceCard1 = ({annonce}) => {
     <Card.Text>
     {annonce.race}
     </Card.Text>
-    
-        {/* <a href className="btn btn-outline-danger btn-sm"><i className="far fa-heart" /></a>
-    */}
+    <Link to="/edit_annonce">
+        <a href className="btn btn-outline-danger btn-sm"><i class="far fa-edit"
+        onClick={() => { dispatch(toggleTrue()); dispatch(getAnnonce(annonce._id)) }}></i></a>
+    </Link>
+
+        <a href className="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"
+        onClick={() => dispatch(deleteAnnonce(annonce._id))}></i></a>
+   
     
   </Card.Body>
 </Card>

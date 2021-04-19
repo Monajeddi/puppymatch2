@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
-import { addAnnonce } from '../../JS/actions/annonce';
+import { addAnnonce , editAnnonce } from '../../JS/actions/annonce';
 import './add.css'
 
 const AddAnnonce = ({ history }) => {
@@ -13,6 +13,15 @@ const AddAnnonce = ({ history }) => {
     const [annonce, setAnnonce] = useState({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", user: user._id})
 
     const dispatch = useDispatch()
+
+    useEffect(() => {
+      isEdit ? setAnnonce(annonceReducer) : setAnnonce({nom:"", race:"", age:0, sexe:"", vaccins:"",localisation:"", user: user._id})
+  }, [isEdit, annonceReducer, user._id]);
+
+    // handleEdit function
+    const handleEdit = () => {
+      dispatch(editAnnonce(annonce._id, annonce))
+  }
 
      // handlechange
      const handleChange = (e) => {
@@ -130,7 +139,10 @@ const AddAnnonce = ({ history }) => {
         </Form.Group>
 
         {isEdit? 
-        <Button variant="light" type="submit">
+
+        <Button variant="light" type="submit"
+        onClick={() => { handleEdit(); history.push("/profil") }}
+        >
         Modifier
       </Button>
       :

@@ -34,7 +34,7 @@ export const addAnnonce = (newAnnonce) => async (dispatch) => {
 export const editAnnonce = (AnnonceId, newAnnonce) => async (dispatch) => {
   try {
       await axios.put(`/api/annonces/${AnnonceId}`, newAnnonce)
-      dispatch(getAnnonce())
+      dispatch(getAnnonces())
   } catch (error) {
       console.log(error)
   }
@@ -87,7 +87,7 @@ export const uploadPicture = (data, id) => {
   };
 
 
-  // delete contact
+  // delete annonce
 export const deleteAnnonce = (_id) => async (dispatch) => {
   try {
       await axios.delete(`/api/annonces/${_id}`)
