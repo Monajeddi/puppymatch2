@@ -1,5 +1,8 @@
 // require express
-const express = require ('express')
+const express = require ('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 //instance of express
 const app = express()
@@ -19,6 +22,15 @@ app.use(express.json())
 app.use('/api/annonces',require('./routes/annonce'));
 app.use('/api/user',require('./routes/user'))
 
+//Serve static assets if in production 
+if(process.env.NODE_ENV === 'production') {
+    // Set static folder
+app.use(express.static('client/build'));
+
+app.get('*',(req, res) => {
+ res.sendFile(path.resolve(_dirname, 'client', 'build', 'index.html' ))
+})
+}
 
 //port 
 const PORT = process.env.PORT 

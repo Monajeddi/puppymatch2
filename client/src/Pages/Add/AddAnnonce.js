@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import {Form, Button} from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import {Link} from 'react-router-dom';
 import { addAnnonce , editAnnonce } from '../../JS/actions/annonce';
 import './add.css'
 
@@ -36,6 +37,7 @@ console.log({ann:annonce})
 
     return (
         
+      <div>
         <Form className="formulaire">
              <Form.Group>
     <Form.File id="exampleFormControlFile1" label="Image" />
@@ -155,6 +157,10 @@ console.log({ann:annonce})
 
       </Form>
         
+        <Link to='/profil'>
+            <button type="button" className="btn btn-warning mt-4 text-white"><i className="icon-cart-add mr-2" /> Go Back</button>
+           </Link>
+           </div>
     )
 }
 
